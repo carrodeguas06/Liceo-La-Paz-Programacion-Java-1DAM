@@ -1,37 +1,34 @@
-package com.liceolapaz.des.BCD;
-
+package com.liceolapaz.des.bcd;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class Principal
+public class Principal {public static void main(String[] args)
+
 {
-    public static void main(String[] args)
+    while (true)
 
     {
-      while (true)
+        crearMenu();
+        int menu = escaner();
+        switch(menu)
 
-      {
-          crearMenu();
-          int menu = escaner();
-          switch(menu)
-
-          {
-              case 1:
-                  juego();
-                  break;
+        {
+            case 1:
+                juego();
+                break;
 
 
-              case 0:
-                  System.out.println("Hasta pronto");
-                  System.exit(0);
+            case 0:
+                System.out.println("Hasta pronto");
+                System.exit(0);
 
-              default:
-                  System.out.println("Número no válido");
-                  break;
-          }
-      }
+            default:
+                System.out.println("Número no válido");
+                break;
+        }
     }
+}
 
     private static void juego()
 
@@ -240,3 +237,4 @@ public class Principal
         return teclado.nextInt();
     }
 }
+
