@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Principal
 {
-    static Socio[] listaSocios = new Socio[999];
-    static Libro[] listaLibros = new Libro[4999];
+    static Socio[] listaSocios = new Socio[1000];
+    static Libro[] listaLibros = new Libro[5000];
 
     static boolean tf;
 
@@ -46,8 +46,6 @@ public class Principal
 
             switch(opcion)
             {
-
-
                 case 0:
                     System.exit(0);
                     break;
@@ -57,7 +55,6 @@ public class Principal
                     {
                         System.out.println("¡No se pueden almacenar más socios!");
                     }
-
                     else
                     {
                         System.out.println("Escriba su nombre: ");
@@ -87,14 +84,11 @@ public class Principal
                         listaSocios[contadorSocios] = new Socio(nombre, apellido1, apellido2, dni, email, fechaNacimiento, numSocio, contadorLibrosSocio);
 
                         contadorSocios++;
-
-
                     }
                     break;
 
 
                 case 2:
-
                     if (contadorLibros == 4999)
                     {
                         System.out.println("¡No se pueden almacenar más libros!");
@@ -124,11 +118,11 @@ public class Principal
                 case 3:
 
                     System.out.println("Escriba su número de socio: ");
-                    numero= leerNumero();
+                    numero = leerNumero();
 
                     for (int i = 0; i < contadorSocios; i++)
                     {
-                        if (numero ==listaSocios[i].numSocio)
+                        if (numero == listaSocios[i].numSocio)
                         {
                             socio = listaSocios[i];
                         }
@@ -141,6 +135,7 @@ public class Principal
                     else
                     {
                         System.out.println("Escriba el ISBN: ");
+
                         isbn = leerTexto();
 
                         libro = null;
@@ -157,12 +152,10 @@ public class Principal
                         {
                             System.out.println("No existe ese libro");
                         }
-
                         else if (libro.cogido == true)
                         {
                             System.out.println("Este libro ya esta cogido");
                         }
-
                         else
                         {
                             libro.setCogido(true);
@@ -245,8 +238,6 @@ public class Principal
                     }
                     break;
 
-
-
                 case 5:
                     for (int i = 0; i < contadorLibros; i++)
                     {
@@ -279,7 +270,6 @@ public class Principal
                             System.out.println(listaSocios[numero].listaLibrosSocio[contador].isbn +", "+ listaSocios[numero].listaLibrosSocio[contador].titulo +", "+ listaSocios[numero].listaLibrosSocio[contador].genero +", "+ listaSocios[numero].listaLibrosSocio[contador].numPaginas);
                         }
                     }
-
                     else
                     {
                         System.out.println("No existe ese socio");
