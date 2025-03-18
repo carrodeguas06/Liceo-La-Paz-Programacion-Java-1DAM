@@ -9,8 +9,7 @@ public class Principal
 
     static Asistentes asistente;
 
-
-    static int  opcion;
+    static int opcion;
 
     static int contadorAsiento = 1;
     static int contadorFilas = 1;
@@ -68,10 +67,10 @@ public class Principal
                         System.out.println("""
                                 Acceso a backstage
                                 1. Si
-                                2. No
-                                Por defecto no se cogerá backstage: """);
+                                2. No""");
 
                         int subOpcion = leerNumero();
+
                         switch (subOpcion)
                         {
                             case 1:
@@ -104,15 +103,19 @@ public class Principal
 
                         case 2:
 
-                            if (cBackstage == 100)
+
+                            if (backstage)
                             {
-                                System.out.println("No se pueden pedir mas entradas de backstage");
-                                break;
-                            }
-                            else if (backstage)
-                            {
-                                System.out.println("El precio es " + precioPiePistaBackstage + "€");
-                                break;
+                                if (cBackstage == 100)
+                                {
+                                    System.out.println("No se pueden pedir mas entradas de backstage");
+                                    break;
+                                }
+                                else
+                                {
+                                    System.out.println("El precio es " + precioPiePistaBackstage + "€");
+                                    break;
+                                }
                             }
                             else if (!backstage)
                             {
@@ -145,11 +148,16 @@ public class Principal
 
                     int posicion = -1;
 
-                    for (int i = 0; i < cGrada+cPiePista; i++)
+                    for (int i = 0; i < 26000; i++)
                     {
+                        if (listaAsistentes[i] == null) {
+                            continue;
+                        }
                         if (mail.equals(listaAsistentes[i].getEmail()))
                         {
                             posicion = i;
+                            System.out.println(posicion);
+                            break;
                         }
                     }
                     if (posicion == -1)
@@ -213,7 +221,7 @@ public class Principal
             System.out.println("Escriba el mes de fecha de nacimiento: ");
             mesFecha = leerNumero();
 
-            System.out.println("Escriba el ano de fecha de nacimiento: ");
+            System.out.println("Escriba el año de fecha de nacimiento: ");
             anhoFecha = leerNumero();
 
             if ((2025 - anhoFecha) <= 18)
@@ -242,30 +250,29 @@ public class Principal
                 }
                 else if (tipoEntrada==2)
                 {
-                    codigo = cGrada + cPiePista;
-                    precio = precioPiePista;
-                    fila = 0;
-                    asiento = 0;
-                    pieDePista = true;
-                    backstage = false;
-                    contadorAsiento ++;
+                    if (backstage) {
+                        codigo = cGrada + cPiePista;
+                        precio = precioPiePistaBackstage;
+                        fila = 0;
+                        asiento = 0;
+                        pieDePista = true;
+                        backstage = true;
 
-                    entrada = new Entradas(codigo, precio, fila, asiento, pieDePista, backstage);
-                    cPiePista++;
-                }
-                else if (tipoEntrada==3)
-                {
-                    codigo = cGrada + cPiePista;
-                    precio = precioPiePista;
-                    fila = 0;
-                    asiento = 0;
-                    pieDePista = true;
-                    backstage = true;
-                    contadorAsiento ++;
+                        entrada = new Entradas(codigo, precio, fila, asiento, pieDePista, backstage);
+                        cPiePista++;
+                        cBackstage++;
 
-                    entrada = new Entradas(codigo, precio, fila, asiento, pieDePista, backstage);
-                    cPiePista++;
-                    cBackstage++;
+                    } else {
+                        codigo = cGrada + cPiePista;
+                        precio = precioPiePista;
+                        fila = 0;
+                        asiento = 0;
+                        pieDePista = true;
+                        backstage = false;
+
+                        entrada = new Entradas(codigo, precio, fila, asiento, pieDePista, backstage);
+                        cPiePista++;
+                    }
                 }
             }
 

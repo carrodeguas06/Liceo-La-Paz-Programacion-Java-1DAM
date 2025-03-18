@@ -20,6 +20,7 @@ public class Asistentes
     this.diaFecha = diaFecha;
     this.mesFecha = mesFecha;
     this.anhoFecha = anhoFecha;
+    this.entrada = entrada;
     }
 
     public String getDni()
